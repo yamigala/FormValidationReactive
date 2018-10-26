@@ -5,6 +5,7 @@ import { FakedataService } from '../../fakedata.service';
 import { FormService } from '../../form.service';
 import { Irctc } from '../../../irctc.model';
 
+
 // export interface Irctc{
 //   fromStation: string;
 //   toStation: string;
@@ -28,9 +29,12 @@ export class BookedticketsComponent implements OnInit {
 
   ngOnInit() {
    let t=this.formservice.getTicketData().subscribe(
-      data => this.tickets = data
+      data =>{ this.tickets = data
+      console.log(data);}
+      
+      
     )
-    console.log("hello",t);
+  
     
   }
 
