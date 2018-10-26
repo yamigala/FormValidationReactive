@@ -1,0 +1,55 @@
+<div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="msform">
+
+    <!-- progressbar -->
+
+    <!-- fieldsets -->
+    <fieldset>
+
+      <h2 class="fs-title">Create your account</h2>
+      <div>
+
+        <select formControlName="fromStation" required>
+          <option value="" disabled selected>From Station</option>
+          <option *ngFor="let data of fromStation" value="data.fromStation">{{data.fromStation}}</option>
+        </select>
+        <!-- <div [hidden]="fromStation.valid " class="alert alert-danger">
+          FromStation is required
+        </div> -->
+      </div>
+      <select formControlName="toStation" required>
+        <option value="" disabled selected>To Station</option>
+        <option *ngFor="let data of toStation" value="data.toStation">{{data.toStation}}</option>
+      </select>
+      <!-- <div [hidden]="toStation.valid " class="alert alert-danger">
+        ToStation is required
+      </div> -->
+
+      <input type="date" placeholder="Date" formControlName="date" required />
+      <!-- <div [hidden]="date.valid " class="alert alert-danger">
+        Date is required
+      </div> -->
+      <input type="text" maxlength="5" placeholder="Train Number" formControlName="trainNo" required/>
+      <!-- <div [hidden]="trainNo.valid " class="alert alert-danger">
+        TrainNo is required
+      </div> -->
+      
+      <select formControlName="noOfTicket" required>
+        <option value="" disabled selected>No of Ticket</option>
+        <option *ngFor="let data of noOfTicket" value="data.noOfTicket">{{data.noOfTicket}}</option>
+      </select>
+      <!-- <div [hidden]="noOfTicket.valid " class="alert alert-danger">
+        NoOfTicket is required
+      </div> -->
+      <select formControlName="typeOfTicket" required>
+        <option value="" disabled selected>Type of Ticket</option>
+        <option *ngFor="let data of typeOfTicket" value="data.typeOfTicket">{{data.typeOfTicket}}</option>
+      </select>
+      <!-- <div [hidden]="typeOfTicket.valid " class="alert alert-danger">
+        TypeOfTicket is required
+      </div> -->
+      <input type="submit" [disabled]="!profileForm.valid" class="btn btn-success" />
+
+    </fieldset>
+  </form>
+</div>
