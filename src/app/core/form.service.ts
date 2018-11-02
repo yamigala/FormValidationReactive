@@ -40,8 +40,10 @@ export class FormService {
       { typeOfTicket: "nonAC" },
       { typeOfTicket: "General" }];
   }
+  /**
+   * get method
+   */
   getFormStation():FromStation[]{
-    
     
     return this.fromStation;
   }
@@ -54,10 +56,17 @@ export class FormService {
   getTypeOfTicket():TypeOfClass[]{
     return this.typeOfTicket;
   }
-
   private ticketsurl = 'api/tickets';  
 
   getTicketData(): Observable<Irctc[]> {
     return this.http.get<Irctc[]>(this.ticketsurl)
 }
+
+adddata (tickets): Observable<Irctc> {
+  return this.http.post<Irctc>(this.ticketsurl,tickets);
+    
+    
+  
+}
+
 }

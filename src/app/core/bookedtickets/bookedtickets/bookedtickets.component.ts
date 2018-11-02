@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { FakedataService } from '../../fakedata.service';
+
 import { FormService } from '../../form.service';
 import { Irctc } from '../../../irctc.model';
 
@@ -22,21 +22,19 @@ import { Irctc } from '../../../irctc.model';
 })
 export class BookedticketsComponent implements OnInit {
 
-  tickets : Irctc [];
-     /** URL to web api */
+  tickets: Irctc[];
 
-  constructor(private formservice : FormService) { }
 
-  ngOnInit() {
-   let t=this.formservice.getTicketData().subscribe(
-      data =>{ this.tickets = data
-      console.log(data);}
-      
-      
-    )
+  constructor(private formservice: FormService) { }
   
-    
+  ngOnInit() {
+     this.formservice.getTicketData().subscribe(
+      data => {
+      this.tickets = data
+        console.log(data);
+      }
+    )
+
+
   }
-
-
 }

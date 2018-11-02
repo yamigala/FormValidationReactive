@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="msform">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" id="msform">
 
     <!-- progressbar -->
 
@@ -9,18 +9,14 @@
       <h2 class="fs-title">Create your account</h2>
       <div>
 
-        <select formControlName="fromStation" required>
-          <option value="" disabled selected>From Station</option>
-          <option *ngFor="let data of fromStation" value="data.fromStation">{{data.fromStation}}</option>
-        </select>
+          <input type ="text" placeholder= FromStation formControlName="fromStation" required>
+          
+        
         <!-- <div [hidden]="fromStation.valid " class="alert alert-danger">
           FromStation is required
         </div> -->
       </div>
-      <select formControlName="toStation" required>
-        <option value="" disabled selected>To Station</option>
-        <option *ngFor="let data of toStation" value="data.toStation">{{data.toStation}}</option>
-      </select>
+      <input type ="text" placeholder= toStation formControlName="toStation" required>
       <!-- <div [hidden]="toStation.valid " class="alert alert-danger">
         ToStation is required
       </div> -->
@@ -33,23 +29,32 @@
       <!-- <div [hidden]="trainNo.valid " class="alert alert-danger">
         TrainNo is required
       </div> -->
+      <input type ="number" placeholder= noOfTickets formControlName="noOfTicket" required>
       
-      <select formControlName="noOfTicket" required>
-        <option value="" disabled selected>No of Ticket</option>
-        <option *ngFor="let data of noOfTicket" value="data.noOfTicket">{{data.noOfTicket}}</option>
-      </select>
       <!-- <div [hidden]="noOfTicket.valid " class="alert alert-danger">
         NoOfTicket is required
       </div> -->
-      <select formControlName="typeOfTicket" required>
-        <option value="" disabled selected>Type of Ticket</option>
-        <option *ngFor="let data of typeOfTicket" value="data.typeOfTicket">{{data.typeOfTicket}}</option>
-      </select>
+      <input type ="text" placeholder= typeOfTickets formControlName="typeOfTicket" required>
       <!-- <div [hidden]="typeOfTicket.valid " class="alert alert-danger">
         TypeOfTicket is required
       </div> -->
       <input type="submit" [disabled]="!profileForm.valid" class="btn btn-success" />
 
     </fieldset>
+   
   </form>
+  <div *ngFor = "let data of irctcFormData "> {{data | json}}</div>
+  <!-- <div>
+    <table>
+      <tr>
+      <th> fromStation </th>
+      <th> toStation </th>
+      <th> date </th>
+      <th> trainNo </th>
+      <th> noOfTicket </th>
+      <th> typeOfTicket </th>
+      </tr>
+    </table>
+  </div> -->
+  
 </div>

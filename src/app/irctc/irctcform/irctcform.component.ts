@@ -12,8 +12,8 @@ export class IrctcformComponent implements OnInit {
   public toStation: ToStation[];
   public noOfTicket: NoOfTicket[];
   public typeOfTicket: TypeOfClass[];
-  public irctcFormData;
-  data1: Irctc;
+  public irctcFormData :Irctc[];
+  // data1: Irctc;
 
   submitted: boolean;
 
@@ -25,15 +25,15 @@ export class IrctcformComponent implements OnInit {
   // trainNo: number;
   profileForm = this.fb.group({
     fromStation: ['', Validators.required],
-    toStation: ['',Validators.required],
-    noOfTicket: ['',Validators.required],
-    typeOfTicket: ['',Validators.required],
-    date: ['',Validators.required],
-    trainNo: ['',Validators.required]
+    toStation: ['', Validators.required],
+    noOfTicket: ['', Validators.required],
+    typeOfTicket: ['', Validators.required],
+    date: ['', Validators.required],
+    trainNo: ['', Validators.required]
   });
   constructor(private serviceResponce: FormService, private fb: FormBuilder) {
 
-    this.irctcFormData = this.serviceResponce.getFormStation();
+    this.irctcFormData =[];
     this.submitted = false;
   }
   ngOnInit() {
@@ -41,24 +41,29 @@ export class IrctcformComponent implements OnInit {
     this.toStation = this.serviceResponce.getToStation();
     this.noOfTicket = this.serviceResponce.getNoOfTickets();
     this.typeOfTicket = this.serviceResponce.getTypeOfTicket();
-    this.data1 = {
-      fromStation: null,
-      toStation: null,
-      noOfTicket: null,
-      typeOfTicket: null,
-      date: null,
-      trainNo: null
-    }
+    // this.data1 = {
+    //   id: null,
+    //   fromStation: null,
+    //   toStation: null,
+    //   noOfTicket: null,
+    //   typeOfTicket: null,
+    //   date: null,
+    //   trainNo: null
+    // }
     console.log(this.noOfTicket);
+
+  }
+
+  onSubmit(formdata) {
+    console.log("id ", formdata);
+
     
+    this.serviceResponce.adddata(formdata).subscribe
+      (tickets => {
+        this.irctcFormData.push(tickets)
+        this.submitted = true;
+      })
 
   }
-
-
-
-  onsubmit() {
-    this.submitted = true;
-  }
-
 
 }

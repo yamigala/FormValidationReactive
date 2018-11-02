@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FormService } from './core/form.service';
 import { BookedticketsModule } from './core/bookedtickets/bookedtickets.module';
-import { FakedataService } from './core/fakedata.service';
+
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 @NgModule({
@@ -18,7 +18,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, HttpClientModule, HttpClientInMemoryWebApiModule, BookedticketsModule, HttpClientInMemoryWebApiModule.forRoot(
+    BrowserModule, CoreModule, HttpClientModule,  BookedticketsModule, HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false })
      ],
   providers: [FormService],

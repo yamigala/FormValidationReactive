@@ -1,4 +1,5 @@
 export class Irctc {
+    id:number;
     fromStation: string;
     toStation: string;
     noOfTicket: number;
